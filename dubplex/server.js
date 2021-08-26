@@ -17,7 +17,7 @@ const server = net.createServer((socket)=>{
             socket.write(
                 buffer
             )
-        },500)
+        },10 + Math.random() * 1500)
         // console.log(buffer, buffer.toString());
     })
 })

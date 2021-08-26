@@ -47,12 +47,16 @@ socket.on('data', (buffer) => {
 let seq = 0;
 function encode(index){
     buffer = Buffer.alloc(6)
-    buffer.writeInt16BE(seq++)
+    buffer.writeInt16BE(seq)
     buffer.writeInt32BE(
         LESSON_IDS[index],2
     )
+    console.log(seq,LESSON_IDS[index])
+    seq++
     return buffer
 }
 
-socket.write(encode(index))
+setInterval(() => {
+    socket.write(encode(index))
+}, 100);
 
